@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.so
+
+# Virtual environment
+venv/
+env/
+.vscode/
+
+# Django
+*.log
+staticfiles/
+media/
+db.sqlite3
+*.sqlite3
+
+# Environment variables
+.env
+*.env
+
+# IDE files
+.idea/
+*.swp
+*.swo
+
+# PyCharm
+*.iml
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
