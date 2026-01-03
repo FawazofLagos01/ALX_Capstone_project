@@ -4,6 +4,7 @@ from .models import Offer
 class OfferSerializer(serializers.ModelSerializer):
     class Meta:
         model = Offer
+        exclude = ['login_password']
         fields = [ 'id', 'seller', 'gift_card_type', 'login_email', 'login_password', 'rate', 'status', 'created_at' ]
 
 class CreateOfferSerializer(serializers.ModelSerializer):
