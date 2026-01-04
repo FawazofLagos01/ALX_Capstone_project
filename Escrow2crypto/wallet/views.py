@@ -11,9 +11,6 @@ class WalletBalanceView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        try:
-            wallet = Wallet.objects.get(user=request.user)
+            wallet, _ = Wallet.objects.get_or_create(user=request.user)
             serializer = WalletSerializer(wallet)
             return Response(serializer.data, status=200)
-        except Wallet.DoesNotExist:
-            return Response({'error': 'Wallet not found'}, status=404)

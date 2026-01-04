@@ -22,7 +22,7 @@ class StartTradeView(APIView):
         amount = Decimal(request.data.get('amount'))
 
         offer = Offer.objects.get(id=offer_id)
-        seller_wallet = Wallet.objects.get(user=offer.seller)
+        seller_wallet, _ = Wallet.objects.get_or_create(user=offer.seller)
 
         if seller_wallet.usdt_balance < amount:
             return Response({'error': 'Seller does not have enough USDT balance.'}, status=400)
@@ -64,7 +64,7 @@ class CompleteTradeView(APIView):
         trade = Trade.objects.get(id=trade_id, status='pending')
         escrow = Escrow.objects.get(trade=trade)
 
-        buyer_wallet = Wallet.objects.get(user=trade.buyer)
+        buyer_wallet, _ = Wallet.objects.get_or_create(user=trade.buyer)
 
         #release USDT to buyer
         buyer_wallet.usdt_balance += escrow.locked_usdt
@@ -85,7 +85,7 @@ class FailTradeView(APIView):
         trade = Trade.objects.get(id=trade_id, status='pending')
         escrow = Escrow.objects.get(trade=trade)
 
-        seller_wallet = Wallet.objects.get(user=trade.offer.seller)
+        seller_wallet, _ = Wallet.objects.get_or_create(user=trade.offer.seller)
 
         #return USDT to seller
         seller_wallet.usdt_balance += escrow.locked_usdt
