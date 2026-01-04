@@ -1,10 +1,10 @@
 from django.db import models
-from users.models import User
+from django.conf import settings
 
 # Create your models here.
 
 class Wallet(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     usdt_balance = models.DecimalField(max_digits=12, decimal_places=8, default=0)
 
     def __str__(self):
