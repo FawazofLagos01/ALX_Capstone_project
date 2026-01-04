@@ -33,7 +33,7 @@ class DepositView(APIView):
             return Response({'error': 'Deposit amount must be greater than zero'}, status=400)
         
         wallet, _ = Wallet.objects.get_or_create(user=request.user)
-        wallet.balance += float(amount)
+        wallet.balance += amount
         wallet.save()
         return Response({'message': 'Deposit successful', 'new_balance': wallet.balance}, status=200)
     
@@ -57,6 +57,6 @@ class WithdrawView(APIView):
         if wallet.balance < amount:
             return Response({'error': 'Insufficient balance'}, status=400)
         
-        wallet.balance -= float(amount)
+        wallet.balance -= amount
         wallet.save()
         return Response({'message': 'Withdrawal successful', 'new_balance': wallet.balance}, status=200)
