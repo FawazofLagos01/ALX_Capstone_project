@@ -3,6 +3,6 @@ from .views import WalletBalanceView, DepositView, WithdrawView
 
 urlpatterns = [
     path('wallet/balance/', WalletBalanceView.as_view(), name='wallet-balance'),
-    path('wallet/deposit/', WalletBalanceView.as_view(), name='wallet-deposit'),
-    path('wallet/withdraw/', WalletBalanceView.as_view(), name='wallet-withdraw'),
+    path('wallet/deposit/', DepositView.as_view(), name='wallet-deposit'),
+    path('wallet/withdraw/', WithdrawView.as_view(), name='wallet-withdraw'),
 ]
