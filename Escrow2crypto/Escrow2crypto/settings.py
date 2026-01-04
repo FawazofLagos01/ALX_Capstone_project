@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'users',
     'offers',
-    'wallet',
+    'wallet.apps.WalletConfig',
     'trades',
 ]
 
