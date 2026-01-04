@@ -36,3 +36,5 @@ The system connects buyers and sellers in a safe environment where USDT is locke
 - Django REST Framework  
 - PostgreSQL or SQLite  
 - Git & GitHub  
+This project represents the practical knowledge gained during the ALX Backend Engineering program
+
